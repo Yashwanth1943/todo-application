@@ -61,6 +61,12 @@ class Todos extends Component {
 
   onAddNewTask = () => {
     const {inputData, inputDescription} = this.state
+
+    if (inputData.trim() === '' || inputDescription.trim() === '') {
+      alert('Both Title and Description are required!')
+      return
+    }
+
     const newTask = {
       id: uuidv4(),
       title: inputData,
@@ -91,6 +97,7 @@ class Todos extends Component {
         <h1>Simple Todos</h1>
         <div>
 <div className="adding-container">
+  <form onSubmit={this.onAddNewTask}>
   <label htmlFor="title">Title</label>
   <input
     id="title"
@@ -111,9 +118,11 @@ class Todos extends Component {
     required
   />
 
-  <button className="add-button" type="button" onClick={this.onAddNewTask}>
+  <button className="add-button" type="submit">
     Add
   </button>
+</form>
+
 </div>
 
           <ul>
