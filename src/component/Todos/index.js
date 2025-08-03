@@ -98,6 +98,7 @@ class Todos extends Component {
     placeholder="Add Task"
     value={inputData}
     onChange={this.onChangeInput}
+    required
   />
 
   <label htmlFor="description">Description</label>
@@ -107,6 +108,7 @@ class Todos extends Component {
     placeholder="Add Description"
     value={inputDescription}
     onChange={this.onChangeInputDescription}
+    required
   />
 
   <button className="add-button" type="button" onClick={this.onAddNewTask}>
