@@ -18,20 +18,28 @@ const TodoItem = props => {
   return (
     <li className="todo-item">
   {isEdit ? (
-    <>
-      <input
-        type="text"
-        value={taskTitle}
-        onChange={e => setTaskTitle(e.target.value)}
-        className="edit-input"
-      />
-      <textarea
-        value={taskDesc}
-        onChange={e => setTaskDesc(e.target.value)}
-        className="edit-textarea"
-      />
-      <button className="save-btn" onClick={handleSave}>Save</button>
-    </>
+    <form
+    onSubmit={e => {
+      e.preventDefault()
+      handleSave()
+    }}
+    className="edit-form"
+  >
+    <input
+      type="text"
+      value={taskTitle}
+      onChange={e => setTaskTitle(e.target.value)}
+      className="edit-input"
+      required
+    />
+    <textarea
+      value={taskDesc}
+      onChange={e => setTaskDesc(e.target.value)}
+      className="edit-textarea"
+      required
+    />
+    <button className="save-btn" type="submit">Save</button>
+  </form>
   ) : (
     <>
       <div className="task-header">
